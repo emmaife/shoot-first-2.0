@@ -1,0 +1,28 @@
+<header>
+</header>
+<center>
+  <font color = "#999">
+<% if request.referer == new_user_session_url %>
+  <img src="http://i.imgur.com/dyKq81O.png" title="Hosted by imgur.com" />
+    <br><p><h2>Yes, I do.</h2></p></br>
+<% else %>
+    <br><p><h2>Sign Up</h2></p></br>
+<%end%>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %></center>
+

@@ -1,0 +1,35 @@
+<header>
+
+
+          </header>
+          <nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+<ul class="nav navbar-nav">
+    <li><a href="/"><img src="" class="img-responsive" alt="" />Home</a></li>
+    <li class = "active"><a href = "<%= @combat_parser.id%>"> Parsed Text</a></li>
+    <li><a href = "<%= @combat_parser.id%>/breakdown"> Breakdown</a></li>
+     </ul>
+      
+
+  </div><!-- /.container-fluid -->
+</nav><br/>
+<body>
+<p id="notice"><%= notice %></p>
+
+
+
+<center><h1><font color = "#888"><strong>Parsed Combat Text:</strong></h1></font></center>
+
+ 
+ <% @combat_parser.output_log_string.each_line do |line| %>
+ <br><% if line.include?("healed") %> 
+        <font color = "#2EFE2E"><%= line %></font>
+       <% elsif line.include?("hit") %>
+        <font color = "red"> <%= line %> </font>
+        <% elsif line.include?("missed")%>
+        <font color = "#00FFFF"><%=line%></font>
+        <%else%>
+        <font color = "#888"><%=line%></font>
+ <%end%></br>
+ <% end %>
+</body>
